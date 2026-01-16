@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ARSKIY OSINT</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>ARSKIY OSINT</header>
+
+<div class="container">
+    <form method="POST">
+
+        <div class="box">
+            <h2>Поиск по номеру</h2>
+            <input name="phone" placeholder="+79991234567">
+        </div>
+
+        <div class="box">
+            <h2>Поиск по юзернейму</h2>
+            <input name="username" placeholder="username">
+        </div>
+
+        <button type="submit">SEARCH</button>
+    </form>
+
+    {% if links %}
+    <div class="results">
+        <h3>Результаты:</h3>
+        {% for link in links %}
+            <a href="{{ link }}" target="_blank">{{ link }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
