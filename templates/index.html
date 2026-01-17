@@ -5,11 +5,11 @@
     <title>ARSKIY OSINT</title>
     
     <!-- Подключаем CSS -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     
-    <!-- Favicon JPG -->
-    <link rel="icon" type="image/jpeg" href="static/favicon.jpg">
-    <link rel="shortcut icon" href="static/favicon.jpg" type="image/x-icon">
+    <!-- Favicon (16x16 военная каска) -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -37,9 +37,14 @@
         <button type="submit">SEARCH</button>
     </form>
 
+    {% if links %}
     <div class="results">
-        <!-- Сюда через JS или сервер можно вставлять результаты -->
+        <h3>Результаты:</h3>
+        {% for link in links %}
+            <a href="{{ link }}" target="_blank">{{ link }}</a>
+        {% endfor %}
     </div>
+    {% endif %}
 </div>
 
 </body>
